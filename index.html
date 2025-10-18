@@ -1,39 +1,41 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Telegraph Viewer – Nov to Jan</title>
+    <title>Telegraph Preview & Download</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background: #f5f6fa;
             margin: 0;
             padding: 20px;
+            text-align: center;
         }
 
         h1 {
-            text-align: center;
             margin-bottom: 20px;
         }
 
         #gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 15px;
+            gap: 20px;
+            justify-items: center;
         }
 
         .card {
             background: white;
             border-radius: 12px;
             box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
-            cursor: pointer;
             transition: transform 0.2s;
             text-align: center;
-            text-decoration: none;
             color: black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 10px;
         }
 
         .card:hover {
@@ -50,14 +52,37 @@
 
         .card p {
             font-weight: 600;
-            padding: 10px;
+            padding: 10px 0 5px 0;
+            margin: 0;
+        }
+
+        .download-btn, #download-all {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 6px 12px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            margin-top: 5px;
+            transition: background 0.2s;
+        }
+
+        .download-btn:hover, #download-all:hover {
+            background-color: #45a049;
+        }
+
+        #download-all {
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            font-size: 1rem;
         }
     </style>
 </head>
 
 <body>
-
-    <h1>📅 Telegraph Viewer – Nov to Jan</h1>
+    <h1>📅 Telegraph Preview & Download</h1>
+    <button id="download-all">Download All Images</button>
     <div id="gallery"></div>
 
     <script>
@@ -66,7 +91,7 @@
         // Extra November link
         const novLink = { url: `${base}11-30`, title: "Nov 30" };
 
-        // Generate all December + January links
+        // Generate December + January links
         function generateLinks(month, days, monthName) {
             const arr = [];
             for (let i = 1; i <= days; i++) {
@@ -76,45 +101,59 @@
             return arr;
         }
 
-        // Combine all links: Nov -> Dec -> Jan
+        // Combine all links
         const posts = [
             novLink,
             ...generateLinks("12", 31, "Dec"),
-            ...generateLinks("01", 31, "Jan"),
-            ...generateLinks("02", 28, "Feb"),
-            ...generateLinks("03", 31, "Mar"),
-            ...generateLinks("04", 30, "Apr"),
-            ...generateLinks("05", 31, "May"),
-            ...generateLinks("06", 30, "Jun"),
-            ...generateLinks("07", 31, "Jul"),
-            ...generateLinks("08", 31, "Aug"),
-            ...generateLinks("09", 30, "Sep"),
-            ...generateLinks("10", 31, "Oct"),
-            ...generateLinks("11", 30, "Nov")
-          
+            ...generateLinks("01", 31, "Jan")
         ];
 
         const gallery = document.getElementById("gallery");
 
-        // Render preview cards
+        // Render preview cards with individual download buttons
         posts.forEach(post => {
-            const a = document.createElement("a");
-            a.href = post.url; // opens in same tab
-            a.className = "card";
+            const card = document.createElement("div");
+            card.className = "card";
 
+            const imgUrl = `https://image.thum.io/get/${post.url}`;
             const img = document.createElement("img");
-            img.src = `https://image.thum.io/get/${post.url}`;
+            img.src = imgUrl;
             img.alt = post.title;
 
             const title = document.createElement("p");
             title.textContent = post.title;
 
-            a.appendChild(img);
-            a.appendChild(title);
-            gallery.appendChild(a);
+            const downloadBtn = document.createElement("button");
+            downloadBtn.textContent = "Download Image";
+            downloadBtn.className = "download-btn";
+            downloadBtn.addEventListener("click", () => {
+                const link = document.createElement("a");
+                link.href = imgUrl;
+                link.download = `${post.title}.jpg`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            });
+
+            card.appendChild(img);
+            card.appendChild(title);
+            card.appendChild(downloadBtn);
+            gallery.appendChild(card);
+        });
+
+        // Download all images at once
+        document.getElementById("download-all").addEventListener("click", () => {
+            posts.forEach(post => {
+                const imgUrl = `https://image.thum.io/get/${post.url}`;
+                const link = document.createElement("a");
+                link.href = imgUrl;
+                link.download = `${post.title}.jpg`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            });
         });
     </script>
-
 </body>
 
 </html>
