@@ -1,140 +1,119 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Telegraph Viewer – Nov to Next Nov</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f5f6fa;
-      margin: 0;
-      padding: 20px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegraph Viewer – Nov to Jan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            margin: 0;
+            padding: 20px;
+        }
 
-    h1 {
-      text-align: center;
-      margin-bottom: 10px;
-    }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-    h2 {
-      margin-top: 40px;
-      color: #333;
-      border-bottom: 2px solid #ccc;
-      padding-bottom: 5px;
-    }
+        #gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+        }
 
-    #gallery {
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-    }
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            transition: transform 0.2s;
+            text-align: center;
+            text-decoration: none;
+            color: black;
+        }
 
-    .month {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 15px;
-    }
+        .card:hover {
+            transform: scale(1.04);
+        }
 
-    .card {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
-      transition: transform 0.2s;
-      text-align: center;
-      text-decoration: none;
-      color: black;
-      overflow: hidden;
-    }
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
 
-    .card:hover {
-      transform: scale(1.04);
-    }
-
-    .card img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-      border-top-left-radius: 12px;
-      border-top-right-radius: 12px;
-      background: #eee;
-    }
-
-    .card p {
-      font-weight: 600;
-      padding: 10px;
-    }
-  </style>
+        .card p {
+            font-weight: 600;
+            padding: 10px;
+        }
+    </style>
 </head>
 
 <body>
 
-  <h1>📅 Telegraph Viewer – Nov 30 → Next Nov</h1>
-  <div id="gallery"></div>
+    <h1>📅 Telegraph Viewer – Nov to Jan</h1>
+    <div id="gallery"></div>
 
-  <script>
-    const base = "https://telegra.ph/Check-her--Private--Photos-";
+    <script>
+        const base = "https://telegra.ph/Check-her--Private--Photos-";
 
-    const months = [
-      { code: "11", name: "Nov 2024", start: 30, end: 30 },
-      { code: "12", name: "Dec 2024", days: 31 },
-      { code: "01", name: "Jan 2025", days: 31 },
-      { code: "02", name: "Feb 2025", days: 29 },
-      { code: "03", name: "Mar 2025", days: 31 },
-      { code: "04", name: "Apr 2025", days: 30 },
-      { code: "05", name: "May 2025", days: 31 },
-      { code: "06", name: "Jun 2025", days: 30 },
-      { code: "07", name: "Jul 2025", days: 31 },
-      { code: "08", name: "Aug 2025", days: 31 },
-      { code: "09", name: "Sep 2025", days: 30 },
-      { code: "10", name: "Oct 2025", days: 31 },
-      { code: "11n", name: "Nov 2025", days: 29 }
-    ];
+        // Extra November link
+        const novLink = { url: `${base}11-30`, title: "Nov 30" };
 
-    const gallery = document.getElementById("gallery");
+        // Generate all December + January links
+        function generateLinks(month, days, monthName) {
+            const arr = [];
+            for (let i = 1; i <= days; i++) {
+                const day = String(i).padStart(2, '0');
+                arr.push({ url: `${base}${month}-${day}`, title: `${monthName} ${day}` });
+            }
+            return arr;
+        }
 
-    months.forEach(month => {
-      const section = document.createElement("div");
-      const title = document.createElement("h2");
-      title.textContent = month.name;
-      section.appendChild(title);
+        // Combine all links: Nov -> Dec -> Jan
+        const posts = [
+            novLink,
+            ...generateLinks("12", 31, "Dec"),
+            ...generateLinks("01", 31, "Jan"),
+            ...generateLinks("02", 28, "Feb"),
+            ...generateLinks("03", 31, "Mar"),
+            ...generateLinks("04", 30, "Apr"),
+            ...generateLinks("05", 31, "May"),
+            ...generateLinks("06", 30, "Jun"),
+            ...generateLinks("07", 31, "Jul"),
+            ...generateLinks("08", 31, "Aug"),
+            ...generateLinks("09", 30, "Sep"),
+            ...generateLinks("10", 31, "Oct"),
+            ...generateLinks("11", 30, "Nov")
+          
+        ];
 
-      const grid = document.createElement("div");
-      grid.className = "month";
+        const gallery = document.getElementById("gallery");
 
-      const start = month.start || 1;
-      const end = month.end || month.days;
+        // Render preview cards
+        posts.forEach(post => {
+            const a = document.createElement("a");
+            a.href = post.url; // opens in same tab
+            a.className = "card";
 
-      for (let i = start; i <= end; i++) {
-        const day = String(i).padStart(2, "0");
-        const realCode = month.code === "11n" ? "11" : month.code;
-        const url = `${base}${realCode}-${day}`;
-        const titleText = `${month.name.split(" ")[0]} ${day}`;
+            const img = document.createElement("img");
+            img.src = `https://image.thum.io/get/${post.url}`;
+            img.alt = post.title;
 
-        const card = document.createElement("a");
-        card.href = url;
-        card.className = "card";
-        card.target = "_blank";
+            const title = document.createElement("p");
+            title.textContent = post.title;
 
-        const img = document.createElement("img");
-        // ✅ Correctly encoded and stable Thum.io URL
-        img.src = `https://image.thum.io/get/width/600/https://telegra.ph/bscclassesbio-${realCode}-${day}`;
-        img.alt = titleText;
-        img.onerror = () => img.style.display = "none"; // hides broken previews
-
-        const label = document.createElement("p");
-        label.textContent = titleText;
-
-        card.appendChild(img);
-        card.appendChild(label);
-        grid.appendChild(card);
-      }
-
-      section.appendChild(grid);
-      gallery.appendChild(section);
-    });
-  </script>
+            a.appendChild(img);
+            a.appendChild(title);
+            gallery.appendChild(a);
+        });
+    </script>
 
 </body>
 
