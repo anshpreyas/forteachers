@@ -1,159 +1,285 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Telegraph Preview & Download</title>
+    <title>Fashion & Glamour Models for Empowerment</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        /* Custom Styles */
         body {
-            font-family: Arial, sans-serif;
-            background: #f5f6fa;
-            margin: 0;
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+
+        header {
+            background-color: #343a40;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin: 40px 0 20px;
+            color: #333;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .model-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .model-card img {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .model-card h3 {
+            font-size: 1.5rem;
+            margin: 15px 0;
+            color: #333;
+        }
+
+        .model-card a {
+            text-decoration: none;
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .model-card a:hover {
+            text-decoration: underline;
+        }
+
+        .model-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        footer {
+            background-color: #343a40;
+            color: white;
             padding: 20px;
             text-align: center;
         }
 
-        h1 {
-            margin-bottom: 20px;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        #gallery {
+        .row-cols-md-4 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 20px;
-            justify-items: center;
         }
 
-        .card {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
-            transition: transform 0.2s;
-            text-align: center;
-            color: black;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-bottom: 10px;
+        .section {
+            margin-top: 50px;
         }
 
-        .card:hover {
-            transform: scale(1.04);
-        }
-
-        .card img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            border-top-left-radius: 12px;
-            border-top-right-radius: 12px;
-        }
-
-        .card p {
-            font-weight: 600;
-            padding: 10px 0 5px 0;
-            margin: 0;
-        }
-
-        .download-btn, #download-all {
-            background-color: #4CAF50;
+        .category-header {
+            background-color: #007bff;
             color: white;
-            border: none;
-            border-radius: 6px;
-            padding: 6px 12px;
-            font-size: 0.9rem;
-            cursor: pointer;
-            margin-top: 5px;
-            transition: background 0.2s;
-        }
-
-        .download-btn:hover, #download-all:hover {
-            background-color: #45a049;
-        }
-
-        #download-all {
+            padding: 10px;
+            font-size: 1.8rem;
+            border-radius: 8px;
             margin-bottom: 20px;
-            padding: 10px 20px;
-            font-size: 1rem;
+            text-align: center;
         }
+
     </style>
 </head>
-
 <body>
-    <h1>📅 Telegraph Preview & Download</h1>
-    <button id="download-all">Download All Images</button>
-    <div id="gallery"></div>
 
+    <!-- Header -->
+    <header>
+        <h1>Fashion & Glamour Models for Empowerment</h1>
+        <p>Discover and celebrate empowered models across various categories.</p>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+
+        <!-- High Fashion & Luxury Models -->
+        <div class="section">
+            <div class="category-header">High Fashion & Luxury Models</div>
+            <div class="row row-cols-md-4">
+                <div class="col">
+                    <div class="model-card">
+                        <img src="https://randomuser.me/api/portraits/women/21.jpg" alt="Kendall Jenner">
+                        <h3>Kendall Jenner</h3>
+                        <a href="https://www.instagram.com/kendalljenner/" target="_blank">Instagram</a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="model-card">
+                        <img src="https://randomuser.me/api/portraits/women/22.jpg" alt="Gigi Hadid">
+                        <h3>Gigi Hadid</h3>
+                        <a href="https://www.instagram.com/gigihadid/" target="_blank">Instagram</a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="model-card">
+                        <img src="https://randomuser.me/api/portraits/women/23.jpg" alt="Kaia Gerber">
+                        <h3>Kaia Gerber</h3>
+                        <a href="https://www.instagram.com/kaiagerber/" target="_blank">Instagram</a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="model-card">
+                        <img src="https://randomuser.me/api/portraits/women/24.jpg" alt="Lupita Nyong’o">
+                        <h3>Lupita Nyong’o</h3>
+                        <a href="https://www.instagram.com/lupitanyongo/" target="_blank">Instagram</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bold & Empowering Models -->
+        <div class="section">
+            <div class="category-header">Bold & Empowering Models</div>
+            <div class="row row-cols-md-4">
+                <div class="col">
+                    <div class="model-card">
+                        <img src="https://randomuser.me/api/portraits/women/25.jpg" alt="Emily Ratajkowski">
+                        <h3>Emily Ratajkowski</h3>
+                        <a href="https://www.instagram.com/emrata/" target="_blank">Instagram</a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="model-card">
+                        <img src="https://randomuser.me/api/portraits/women/26.jpg" alt="Hailey Bieber">
+                        <h3>Hailey Bieber</h3>
+                        <a href="https://www.instagram.com/haileybieber/" target="_blank">Instagram</a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="model-card">
+                        <img src="https://randomuser.me/api/portraits/women/27.jpg" alt="Irina Shayk">
+                        <h3>Irina Shayk</h3>
+                        <a href="https://www.instagram.com/irinashayk/" target="_blank">Instagram</a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="model-card">
+                        <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="Ashley Graham">
+                        <h3>Ashley Graham</h3>
+                        <a href="https://www.instagram.com/ashleygraham/" target="_blank">Instagram</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fitness & Athletic Models -->
+        <div class="section">
+            <div class="category-header">Fitness & Athletic Models</div>
+            <div class="row row-cols-md-4">
+                <div class="col">
+                    <div class="model-card">
+                        <img src="https://randomuser.me/api/portraits/women/29.jpg" alt="Jen Selter">
+                        <h3>Jen Selter</h3>
+                        <a href="https://www.instagram.com/jenselter/" target="_blank">Instagram</a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="model-card">
+                        <img src="https://randomuser.me/api/portraits/women/30.jpg" alt="Kayla Itsines">
+                        <h3>Kayla Itsines</h3>
+                        <a href="https://www.instagram.com/kayla_itsines/" target="_blank">Instagram</a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="model-card">
+                        <img src="https://randomuser.me/api/portraits/women/31.jpg" alt="Amanda Bisk">
+                        <h3>Amanda Bisk</h3>
+                        <a href="https://www.instagram.com/amandabisk/" target="_blank">Instagram</a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="model-card">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sophie Guidolin">
+                        <h3>Sophie Guidolin</h3>
+                        <a href="https://www.instagram.com/sophie_guidolin/" target="_blank">Instagram</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Adult Film Stars Who Embrace Fashion -->
+        <div class="section">
+            <div class="category-header">Adult Film Stars Who Embrace Fashion</div>
+            <div class="row row-cols-md-4" id="adult-models-container"></div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Created by Your Name - Fashion & Glamour 2023</p>
+    </footer>
+
+    <!-- Bootstrap JS & Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+    <!-- JavaScript for Adult Film Stars -->
     <script>
-        const base = "https://telegra.ph/Check-her--Private--Photos-";
-
-        // Extra November link
-        const novLink = { url: `${base}11-30`, title: "Nov 30" };
-
-        // Generate December + January links
-        function generateLinks(month, days, monthName) {
-            const arr = [];
-            for (let i = 1; i <= days; i++) {
-                const day = String(i).padStart(2, '0');
-                arr.push({ url: `${base}${month}-${day}`, title: `${monthName} ${day}` });
-            }
-            return arr;
-        }
-
-        // Combine all links
-        const posts = [
-            novLink,
-            ...generateLinks("12", 31, "Dec"),
-            ...generateLinks("01", 31, "Jan")
+        const adultModels = [
+            'Mia Khalifa', 'Sasha Grey', 'Stormy Daniels', 'Kendra Wilkinson', 
+            'Jenna Jameson', 'Tera Patrick', 'Alexis Texas', 'Abella Danger', 
+            'Riley Reid', 'Katie Morgan', 'Kimmy Granger', 'Holly Randall', 
+            'Eva Lovia', 'Dani Daniels', 'Kelsi Monroe', 'August Ames', 
+            'Nicole Aniston', 'Jenna Haze', 'Cherie DeVille', 'Kendra Lust'
         ];
 
-        const gallery = document.getElementById("gallery");
+        const container = document.getElementById('adult-models-container');
 
-        // Render preview cards with individual download buttons
-        posts.forEach(post => {
-            const card = document.createElement("div");
-            card.className = "card";
+        adultModels.forEach(model => {
+            const col = document.createElement('div');
+            col.classList.add('col');
+            const modelCard = document.createElement('div');
+            modelCard.classList.add('model-card');
 
-            const imgUrl = `https://image.thum.io/get/${post.url}`;
-            const img = document.createElement("img");
-            img.src = imgUrl;
-            img.alt = post.title;
+            const img = document.createElement('img');
+            img.src = `https://randomuser.me/api/portraits/women/33.jpg`;  // Placeholder image
 
-            const title = document.createElement("p");
-            title.textContent = post.title;
+            const name = document.createElement('h3');
+            name.textContent = model;
 
-            const downloadBtn = document.createElement("button");
-            downloadBtn.textContent = "Download Image";
-            downloadBtn.className = "download-btn";
-            downloadBtn.addEventListener("click", () => {
-                const link = document.createElement("a");
-                link.href = imgUrl;
-                link.download = `${post.title}.jpg`;
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            });
+            const googleLink = document.createElement('a');
+            googleLink.href = `https://www.google.com/search?hl=en&tbm=isch&q=${model.replace(/ /g, '+')}+hot+pics`;
+            googleLink.target = "_blank";
+            googleLink.textContent = "Google Images";
 
-            card.appendChild(img);
-            card.appendChild(title);
-            card.appendChild(downloadBtn);
-            gallery.appendChild(card);
-        });
-
-        // Download all images at once
-        document.getElementById("download-all").addEventListener("click", () => {
-            posts.forEach(post => {
-                const imgUrl = `https://image.thum.io/get/${post.url}`;
-                const link = document.createElement("a");
-                link.href = imgUrl;
-                link.download = `${post.title}.jpg`;
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            });
+            modelCard.appendChild(img);
+            modelCard.appendChild(name);
+            modelCard.appendChild(googleLink);
+            col.appendChild(modelCard);
+            container.appendChild(col);
         });
     </script>
-</body>
 
+</body>
 </html>
